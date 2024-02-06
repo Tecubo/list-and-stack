@@ -1,17 +1,5 @@
 #include "list.h"
 
-void malloc_error(void *pointer)
-{
-    if (pointer == NULL)
-        errx(1, "Error: malloc failed");
-}
-
-void list_is_null(List *list)
-{
-    if (list == NULL)
-        errx(1, "Error: the list is null");
-}
-
 int main()
 {
     List *list = list_empty();
@@ -39,7 +27,7 @@ List *list_empty()
 
 int list_is_empty(List *list)
 {
-    list_is_null(list);
+    pointer_is_null(list);
     if (list->value)
         return 0;
     else
@@ -48,7 +36,7 @@ int list_is_empty(List *list)
 
 void list_append(List *list, int element)
 {
-    list_is_null(list);
+    pointer_is_null(list);
     List *new_element = malloc(sizeof(List));
     malloc_error(new_element);
     new_element->value = element;
@@ -62,7 +50,7 @@ void list_append(List *list, int element)
 
 int list_pop(List *list)
 {
-    list_is_null(list);
+    pointer_is_null(list);
     int value = 0;
     if (list_is_empty(list))
         return -1;
@@ -82,13 +70,13 @@ int list_pop(List *list)
 
 int list_lenght(List *list)
 {
-    list_is_null(list);
+    pointer_is_null(list);
     return list->value;
 }
 
 void list_print(List *list)
 {
-    list_is_null(list);
+    pointer_is_null(list);
     List *l = list->next;
     int lenght = list_lenght(list);
     printf("[");
@@ -105,7 +93,7 @@ void list_print(List *list)
 
 int list_get_element(List *list, int index)
 {
-    list_is_null(list);
+    pointer_is_null(list);
     int lenght = list_lenght(list);
     if (index >= lenght)
         errx(1, "Error: index out of range");
@@ -119,7 +107,7 @@ int list_get_element(List *list, int index)
 
 void list_destroy(List *list)
 {
-    list_is_null(list);
+    pointer_is_null(list);
     List *previous_element = list;
     List *last_element = list->next;
     while (last_element != NULL)

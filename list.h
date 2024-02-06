@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <err.h>
+#include "functions.h"
 
 typedef struct List List;
 struct List
